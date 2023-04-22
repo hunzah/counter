@@ -1,26 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
-import './App.css';
+import s from './App.module.css';
+import {Button} from './components/Button/Button';
+import {Scoreboard} from './components/Scoreboard/Scoreboard';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    let [count, setCount] = useState<number>(0)
+    const callbackSum = () => {
+        count < 5 && setCount(++count)
+    }
+    const callbackRes = () => {
+        setCount(0)
+    }
+
+    const disabledSum = count === 5
+
+    const disabledRes = count === 0
+
+
+    return (
+        <div className={s.App}>
+            <div className={s.wrapper}>
+                <div className={s.container}><Scoreboard count={count}/>
+                    <Button callbackSum={callbackSum} buttonName="Sum" disabled={disabledSum}/>
+                    <Button callbackRes={callbackRes} buttonName="Res" disabled={disabledRes}/>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default App;
