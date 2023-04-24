@@ -12,7 +12,7 @@ function App() {
         setCount(0)
     }
 
-    const disabledSum = count === 5
+    const disabledSum = count === 6
 
     const disabledRes = count === 0
 
