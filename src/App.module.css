@@ -1,23 +1,27 @@
 .App {
-  padding-top: 300px;
-  text-align: center;
-  height: 100vw;
-  width: 100%;
-  background-color: brown;
+
+    display: flex;
+    justify-content: center;
+    min-height: 100%;
+    align-items: center;
+    background-color: #1e193b;
+
 
 }
 
 .wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+    border: solid 5px #9fcece;
+    border-radius: 20px;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 2px solid black;
-  padding: 10px;
+.buttonsContainer {
+    font-size: 0.1vw;
+    color: #9fcece;
+    border: 5px solid #9fcece;
+    border-radius: 20px;
+    padding: 2vw 0;
+    margin: 3vw 3vw;
+    display: flex;
+    justify-content: space-around;
+
 }

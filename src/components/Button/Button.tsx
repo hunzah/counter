@@ -14,11 +14,11 @@ export const Button: FC<PropsType> = (props) => {
         if(callbackSum) callbackSum()
         if(callbackRes) callbackRes()
     }
-
+const className = disabled? `${s.buttons} ${s.disabled}`:s.buttons
     return (
-        <span className={s.wrapper}>
-            <button disabled={props.disabled} className={s.buttons} onClick={onClickHunter}>{props.buttonName}</button>
-        </span>
+        <div className={s.wrapper}>
+            <button disabled={disabled} className={className} onClick={onClickHunter}>{buttonName}</button>
+        </div>
     );
 };
 

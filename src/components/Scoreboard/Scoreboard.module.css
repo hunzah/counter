@@ -1,9 +1,14 @@
 .scoreboard {
-    font-size: 100px;
-    color: white;
+    font-size: 8vw;
+    color: #9fcece;
+    border: 5px solid #9fcece;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2vw 15vw;
+    margin: 3vw 3vw;
 }
-
 .disabled {
-    font-size: 100px;
-    color: blue;
+    color: red;
 }

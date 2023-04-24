@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import logo from './logo.svg';
 import s from './App.module.css';
 import {Button} from './components/Button/Button';
 import {Scoreboard} from './components/Scoreboard/Scoreboard';
@@ -21,10 +20,15 @@ function App() {
     return (
         <div className={s.App}>
             <div className={s.wrapper}>
-                <div className={s.container}><Scoreboard count={count}/>
-                    <Button callbackSum={callbackSum} buttonName="Sum" disabled={disabledSum}/>
-                    <Button callbackRes={callbackRes} buttonName="Res" disabled={disabledRes}/>
+                <div
+                    className={s.container}><Scoreboard count={count}/>
                 </div>
+                <div className={s.buttonsContainer}>
+                    <Button callbackSum={callbackSum} buttonName="inc" disabled={disabledSum}/>
+                    <Button callbackRes={callbackRes} buttonName="reset" disabled={disabledRes}/>
+                    <Button callbackRes={callbackRes} buttonName="settings" disabled={disabledRes}/>
+                </div>
+
             </div>
         </div>
     );
