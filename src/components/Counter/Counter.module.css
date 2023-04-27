@@ -1,0 +1,27 @@
+.counter {
+
+    display: flex;
+    justify-content: center;
+    min-height: 100%;
+    align-items: center;
+    background-color: #1e193b;
+
+
+}
+
+.wrapper {
+    border: solid 5px #9fcece;
+    border-radius: 20px;
+}
+
+.buttonsContainer {
+    font-size: 0.1vw;
+    color: #9fcece;
+    border: 5px solid #9fcece;
+    border-radius: 20px;
+    padding: 2vw 0;
+    margin: 3vw 3vw;
+    display: flex;
+    justify-content: space-around;
+
+}
