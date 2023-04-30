@@ -23,7 +23,7 @@ const Counter = (props:PropsType) => {
                 <div className={s.buttonsContainer}>
                     <Button callbackSum={callbackSum} buttonName="inc" disabled={disabledSum}/>
                     <Button callbackRes={callbackRes} buttonName="reset" disabled={disabledRes}/>
-                    {/*<Button callbackRes={callbackRes} buttonName="settings" disabled={disabledRes}/>*/}
+                    <Button callbackRes={callbackRes} buttonName="settings" disabled={disabledRes}/>
                 </div>
 
             </div>
