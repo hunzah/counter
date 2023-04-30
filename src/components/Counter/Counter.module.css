@@ -1,12 +1,9 @@
 .counter {
-
     display: flex;
     justify-content: center;
     min-height: 100%;
     align-items: center;
     background-color: #1e193b;
-
-
 }
 
 .wrapper {
@@ -24,4 +21,39 @@
     display: flex;
     justify-content: space-around;
 
+}
+
+
+.settings {
+    display: flex;
+    justify-content: center;
+    min-height: 100%;
+    align-items: center;
+    background-color: #1e193b;
+}
+
+.inputs {
+    border: 5px solid #9fcece;
+    border-radius: 20px;
+    padding: 2vw 0;
+    margin: 3vw 3vw;
+}
+
+.h3AndInput {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vw 1vw;
+}
+.h3AndInput h3{
+    font-size: 2vw;
+    padding-right: 3vw;
+    color:#9fcece ;
+}
+.inputs input {
+    font-size: 1.5vw;
+
+    border-radius: 10px;
+    padding: 1vw 0;
+    text-align:center;
 }

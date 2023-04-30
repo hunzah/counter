@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import Counter from './components/Counter/Counter';
 import {Settings} from './components/Settings/Settings';
-import {Navigate, Route, Routes} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
+import Error404 from './components/Error404/Error404';
 
 
 function App() {
@@ -47,7 +48,7 @@ function App() {
                                          disabledRes={disabledRes}
                                          maxValue={maxValue}/>}/>
                 <Route path={'/Settings'} element={<Settings/>}/>
-                <Route path={'*'} element={<Error/>}/>
+                <Route path={'*'} element={<Error404/>}/>
 
             </Routes>
         </>
