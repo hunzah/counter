@@ -9,9 +9,10 @@ type PropsType = {
     startValue:number
     maxValueOnChangeHandler:(e:any)=>void
     startValueOnChangeHandler:(e:any)=>void
+    callbackSet:()=> void
 }
 export const Settings: React.FC<PropsType> = (props) => {
-const {maxValue,startValue,maxValueOnChangeHandler,startValueOnChangeHandler, ...otherProps} = props
+const {maxValue,startValue,maxValueOnChangeHandler,startValueOnChangeHandler,callbackSet, ...otherProps} = props
 
     return (
         <div className={s.settings}>
@@ -30,7 +31,7 @@ const {maxValue,startValue,maxValueOnChangeHandler,startValueOnChangeHandler, ..
                 <div className={s.buttonsContainer}>
                     <Button buttonName="set" disabled={false}/>
                     <NavLink to={'/'}>
-                        <Button buttonName={'counter'} disabled={false}/>
+                        <Button buttonName={'counter'} disabled={false} callbackSet={callbackSet}/>
                     </NavLink>
                 </div>
             </div>

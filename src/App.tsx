@@ -7,17 +7,25 @@ import Error404 from './components/Error404/Error404';
 
 function App() {
 // Settings
+    //inputs
     const [maxValue, setMaxValue] = useState<number>(5)
-    const maxValueOnChangeHandler =(e:any)=> {
+    const maxValueOnChangeHandler = (e: any) => {
         setMaxValue(e.currentTarget.value)
         console.log(e.currentTarget.value)
     }
 
     const [startValue, setStartValue] = useState<number>(0)
-    const startValueOnChangeHandler =(e:any)=> {
+    const startValueOnChangeHandler = (e: any) => {
         setStartValue(e.currentTarget.value)
         console.log(e.currentTarget.value)
     }
+    // buttons
+
+    const callbackSet = () => {
+        setMaxValue(maxValue)
+        setStartValue(startValue)
+    }
+
 
 // Counter
     let [count, setCount] = useState<number>(0)
@@ -80,7 +88,8 @@ function App() {
                 <Route path={'/Settings'} element={<Settings maxValue={maxValue}
                                                              maxValueOnChangeHandler={maxValueOnChangeHandler}
                                                              startValue={startValue}
-                                                             startValueOnChangeHandler={startValueOnChangeHandler}/>}/>
+                                                             startValueOnChangeHandler={startValueOnChangeHandler}
+                                                             callbackSet={callbackSet}/>}/>
                 <Route path={'*'} element={<Error404/>}/>
 
             </Routes>

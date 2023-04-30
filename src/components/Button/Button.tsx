@@ -4,15 +4,17 @@ import s from './Button.module.css'
 type PropsType = {
     callbackSum?: ()=> void
     callbackRes?: ()=> void
+    callbackSet?: ()=> void
     buttonName:string
     disabled: boolean
 }
 
 export const Button: FC<PropsType> = (props) => {
-    const {callbackSum,callbackRes,buttonName,disabled} = props
+    const {callbackSum,callbackRes,buttonName,disabled,callbackSet, ...otherProps} = props
     const onClickHunter = () => {
         if(callbackSum) callbackSum()
         if(callbackRes) callbackRes()
+        if(callbackSet) callbackSet()
     }
 const className = disabled? `${s.buttons} ${s.disabled}`:s.buttons
     return (
