@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import s from './Button.module.css'
 
 type PropsType = {
@@ -16,6 +16,7 @@ export const Button: FC<PropsType> = (props) => {
         if(callbackRes) callbackRes()
         if(callbackSet) callbackSet()
     }
+
 const className = disabled? `${s.buttons} ${s.disabled}`:s.buttons
     return (
         <div className={s.wrapper}>

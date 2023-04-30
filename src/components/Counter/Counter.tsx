@@ -35,3 +35,4 @@ const Counter = (props: PropsType) => {
 };
 
 export default Counter;
+
