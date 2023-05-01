@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import {Button} from '../Button/Button';
 import {NavLink} from 'react-router-dom';
 import s from '../Counter/Counter.module.css';
@@ -6,16 +6,30 @@ import b from '../Button/Button.module.css';
 
 
 type PropsType = {
-    setStartValue
-    setMaxValue
-    callbackSet:(min:number, max:number)=> void
-}
+    callbackSet: (min: number, max: number) => void;
+};
 
 export const Settings: React.FC<PropsType> = (props) => {
-const {callbackSet, ...otherProps} = props
-    const [maxValue, setMaxValue] = useState<number>(5)
-    const [startValue, setStartValue] = useState<number>(0)
+    const {callbackSet} = props;
 
+
+    const [maxValue, setMaxValue] = useState(5);
+    const [startValue, setStartValue] = useState(0);
+
+
+    const onChangeMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        const newValue = +e.currentTarget.value;
+        if (!isNaN(newValue)) {
+            setMaxValue(newValue);
+        }
+    };
+
+    const onChangeStartValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        const newValue = +e.currentTarget.value;
+        if (!isNaN(newValue)) {
+            setStartValue(newValue);
+        }
+    };
 
     return (
         <div className={s.settings}>
@@ -23,16 +37,19 @@ const {callbackSet, ...otherProps} = props
                 <div className={s.inputs}>
                     <div className={s.h3AndInput}>
                         <h3>Max Value</h3>
-                        <input value={maxValue}
-                        onChange={(e) => setMaxValue(+e.currentTarget.value)}/>
+
+                        <input value={maxValue} onChange={onChangeMaxValueHandler}/>
                     </div>
                     <div className={s.h3AndInput}>
                         <h3>Min Value</h3>
-                        <input value={startValue}  onChange={(e) => setStartValue(+e.currentTarget.value)}/>
+
+                        <input value={startValue} onChange={onChangeStartValueHandler}/>
                     </div>
                 </div>
                 <div className={s.buttonsContainer}>
-                    <button className={b.buttons} onClick={()=> callbackSet(maxValue, startValue)}>set</button>
+
+                    <button className={b.buttons} onClick={() => callbackSet(maxValue, startValue)}>set</button>
+
                     <NavLink to={'/'}>
                         <Button buttonName={'counter'} disabled={false}/>
                     </NavLink>

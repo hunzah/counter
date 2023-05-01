@@ -25,14 +25,6 @@ function App() {
             localStorage.setItem('countValue', JSON.stringify(count))
         }
     }, [count])
-    useEffect(() => {
-        if (maxValue)
-            localStorage.setItem('maxValue', JSON.stringify(maxValue))
-    }, [maxValue])
-    useEffect(() => {
-        if (startValue)
-            localStorage.setItem('startValue', JSON.stringify(startValue))
-    }, [startValue])
 
     useEffect(() => {
         let valueAsString = localStorage.getItem('countValue')
@@ -40,18 +32,21 @@ function App() {
             setCount(JSON.parse(valueAsString))
         }
     }, [])
+
+
+    useEffect(() => {
+        if (maxValue)
+            localStorage.setItem('maxValue', JSON.stringify(maxValue))
+
+    }, [maxValue])
+
     useEffect(() => {
         let valueAsString = localStorage.getItem('maxValue')
         if (valueAsString) {
             setMaxValue(JSON.parse(valueAsString))
         }
     }, [])
-    useEffect(() => {
-        let valueAsString = localStorage.getItem('startValue')
-        if (valueAsString) {
-            setStartValue(JSON.parse(valueAsString))
-        }
-    }, [])
+
 
 
     const callbackSum = () => {
@@ -78,8 +73,6 @@ function App() {
                                          disabledRes={disabledRes}
                                          maxValue={maxValue}/>}/>
                 <Route path={'/Settings'} element={<Settings
-                    setMaxValue={setMaxValue}
-                    setStartValue={setStartValue}
                     callbackSet={callbackSet}
                 />}/>
                 <Route path={'*'} element={<Error404/>}/>
