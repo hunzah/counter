@@ -48,7 +48,6 @@ function App() {
     }, [])
 
 
-
     const callbackSum = () => {
         count < maxValue && setCount(++count)
 
@@ -74,6 +73,7 @@ function App() {
                                          maxValue={maxValue}/>}/>
                 <Route path={'/Settings'} element={<Settings
                     callbackSet={callbackSet}
+                    setCount={setCount}
                 />}/>
                 <Route path={'*'} element={<Error404/>}/>
 

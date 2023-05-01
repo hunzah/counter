@@ -7,10 +7,11 @@ import b from '../Button/Button.module.css';
 
 type PropsType = {
     callbackSet: (min: number, max: number) => void;
+    setCount:(startValue:number)=>void
 };
 
 export const Settings: React.FC<PropsType> = (props) => {
-    const {callbackSet} = props;
+    const {callbackSet,setCount} = props;
 
 
     const [maxValue, setMaxValue] = useState(5);
@@ -30,7 +31,10 @@ export const Settings: React.FC<PropsType> = (props) => {
             setStartValue(newValue);
         }
     };
-
+    const onClickSetHandler = () => {
+        callbackSet(maxValue, startValue)
+        setCount(startValue)
+    }
     return (
         <div className={s.settings}>
             <div className={s.wrapper}>
@@ -48,7 +52,7 @@ export const Settings: React.FC<PropsType> = (props) => {
                 </div>
                 <div className={s.buttonsContainer}>
 
-                    <button className={b.buttons} onClick={() => callbackSet(maxValue, startValue)}>set</button>
+                    <button className={b.buttons} onClick={onClickSetHandler}>set</button>
 
                     <NavLink to={'/'}>
                         <Button buttonName={'counter'} disabled={false}/>
