@@ -20,33 +20,31 @@ function App() {
 // Counter
     let [count, setCount] = useState<number>(0)
 
-    useEffect(() => {
-        if (count) {
-            localStorage.setItem('countValue', JSON.stringify(count))
-        }
-    }, [count])
+    // useEffect(() => {
+    //     if (count) {
+    //         localStorage.setItem('countValue', JSON.stringify(count))
+    //     }
+    // }, [count])
 
     useEffect(() => {
-        let valueAsString = localStorage.getItem('countValue')
-        if (valueAsString) {
-            setCount(JSON.parse(valueAsString))
+        let countValueAsString = localStorage.getItem('countValue')
+        if (countValueAsString) {
+            setCount(JSON.parse(countValueAsString))
         }
+        let maxValueAsString = localStorage.getItem('maxValue')
+        if (maxValueAsString) {
+            setMaxValue(JSON.parse(maxValueAsString))}
+        let startValue = localStorage.getItem('startValue')
+        if (startValue) {
+            setStartValue(JSON.parse(startValue))}
     }, [])
 
 
-    useEffect(() => {
-        if (maxValue)
-            localStorage.setItem('maxValue', JSON.stringify(maxValue))
-
-    }, [maxValue])
-
-    useEffect(() => {
-        let valueAsString = localStorage.getItem('maxValue')
-        if (valueAsString) {
-            setMaxValue(JSON.parse(valueAsString))
-        }
-    }, [])
-
+    // useEffect(() => {
+    //     if (maxValue)
+    //         localStorage.setItem('maxValue', JSON.stringify(maxValue))
+    //
+    // }, [maxValue])
 
     const callbackSum = () => {
         count < maxValue && setCount(++count)
@@ -72,8 +70,12 @@ function App() {
                                          disabledRes={disabledRes}
                                          maxValue={maxValue}/>}/>
                 <Route path={'/Settings'} element={<Settings
+                    maxValue={maxValue}
+                    startValue={startValue}
                     callbackSet={callbackSet}
                     setCount={setCount}
+                    setMaxValue={setMaxValue}
+                    setStartValue={setStartValue}
                 />}/>
                 <Route path={'*'} element={<Error404/>}/>
 
