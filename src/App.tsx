@@ -33,18 +33,14 @@ function App() {
         }
         let maxValueAsString = localStorage.getItem('maxValue')
         if (maxValueAsString) {
-            setMaxValue(JSON.parse(maxValueAsString))}
+            setMaxValue(JSON.parse(maxValueAsString))
+        }
         let startValue = localStorage.getItem('startValue')
         if (startValue) {
-            setStartValue(JSON.parse(startValue))}
+            setStartValue(JSON.parse(startValue))
+        }
     }, [])
 
-
-    // useEffect(() => {
-    //     if (maxValue)
-    //         localStorage.setItem('maxValue', JSON.stringify(maxValue))
-    //
-    // }, [maxValue])
 
     const callbackSum = () => {
         count < maxValue && setCount(++count)
