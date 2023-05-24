@@ -6,11 +6,13 @@ export type CounterStateType = {
     maxValue: number;
 };
 
-const initialState: CounterStateType = {
+export const initialState: CounterStateType = {
     count: 0,
     startValue: 0,
     maxValue: 5,
 };
+
+
 
 
 export type ActionType =

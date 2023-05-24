@@ -44,7 +44,6 @@ function App() {
 
     const callbackSum = () => {
         count < maxValue && setCount(++count)
-
     }
     const callbackRes = () => {
         setCount(startValue)
