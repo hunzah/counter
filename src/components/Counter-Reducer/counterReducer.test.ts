@@ -1,4 +1,5 @@
-import counterReducer, {CounterStateType, incrementCountAC, resetCountAC} from './counterReducer';
+import counterReducer, {incrementCountAC, resetCountAC,setMaxValueAC} from './counterReducer';
+import {ChangeEvent} from 'react';
 
 test('count should be increment',()=>{
 
@@ -21,4 +22,17 @@ test('count must be reset',()=>{
 
     const endStateState = counterReducer(startState,resetCountAC())
     expect(endStateState.count).toBe(0)
+})
+test('new maxValue should be added',()=>{
+
+    const startState = {
+        count: 3,
+        startValue: 0,
+        maxValue: 5,
+    };
+    const mockEvent = {
+        currentTarget: { value: '8' },
+    } as ChangeEvent<HTMLInputElement>;
+    const endStateState = counterReducer(startState,setMaxValueAC(mockEvent))
+    expect(endStateState.maxValue).toBe(8)
 })
