@@ -20,11 +20,11 @@ function App() {
 // Counter
     let [count, setCount] = useState<number>(0)
 
-    // useEffect(() => {
-    //     if (count) {
-    //         localStorage.setItem('countValue', JSON.stringify(count))
-    //     }
-    // }, [count])
+    useEffect(() => {
+        if (count) {
+            localStorage.setItem('countValue', JSON.stringify(count))
+        }
+    }, [count])
 
     useEffect(() => {
         let countValueAsString = localStorage.getItem('countValue')

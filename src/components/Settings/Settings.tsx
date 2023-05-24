@@ -57,7 +57,7 @@ export const Settings: React.FC<PropsType> = (props) => {
 
                     <button className={b.buttons} onClick={onClickSetHandler}>set</button>
 
-                    <NavLink to={'/counter'}>
+                    <NavLink to={'/'}>
                         <Button buttonName={'counter'} disabled={false}/>
                     </NavLink>
                 </div>
