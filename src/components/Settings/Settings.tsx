@@ -34,8 +34,8 @@ export const Settings: React.FC<PropsType> = (props) => {
     };
     const onClickSetHandler = () => {
         callbackSet(maxValue, startValue)
-        localStorage.setItem('maxValue', String(maxValue))
-        localStorage.setItem('startValue', String(startValue))
+        // localStorage.setItem('maxValue', String(maxValue))
+        // localStorage.setItem('startValue', String(startValue))
         setCount(startValue)
     }
     return (

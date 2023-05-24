@@ -20,26 +20,26 @@ function App() {
 // Counter
     let [count, setCount] = useState<number>(0)
 
-    useEffect(() => {
-        if (count) {
-            localStorage.setItem('countValue', JSON.stringify(count))
-        }
-    }, [count])
-
-    useEffect(() => {
-        let countValueAsString = localStorage.getItem('countValue')
-        if (countValueAsString) {
-            setCount(JSON.parse(countValueAsString))
-        }
-        let maxValueAsString = localStorage.getItem('maxValue')
-        if (maxValueAsString) {
-            setMaxValue(JSON.parse(maxValueAsString))
-        }
-        let startValue = localStorage.getItem('startValue')
-        if (startValue) {
-            setStartValue(JSON.parse(startValue))
-        }
-    }, [])
+    // useEffect(() => {
+    //     if (count) {
+    //         localStorage.setItem('countValue', JSON.stringify(count))
+    //     }
+    // }, [count])
+    //
+    // useEffect(() => {
+    //     let countValueAsString = localStorage.getItem('countValue')
+    //     if (countValueAsString) {
+    //         setCount(JSON.parse(countValueAsString))
+    //     }
+    //     let maxValueAsString = localStorage.getItem('maxValue')
+    //     if (maxValueAsString) {
+    //         setMaxValue(JSON.parse(maxValueAsString))
+    //     }
+    //     let startValue = localStorage.getItem('startValue')
+    //     if (startValue) {
+    //         setStartValue(JSON.parse(startValue))
+    //     }
+    // }, [])
 
 
     const callbackSum = () => {
@@ -51,7 +51,6 @@ function App() {
     }
 
     const disabledSum = count === maxValue
-
     const disabledRes = count === startValue
 
 
