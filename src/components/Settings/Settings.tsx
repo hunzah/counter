@@ -40,7 +40,7 @@ export const Settings: React.FC<PropsType> = () => {
         };
         const onClickSetHandler = () => {
             // callbackSet(maxValue, startValue)
-            dispatch(saveStartAndMaxValueAC(maxValue, startValue))
+            dispatch(saveStartAndMaxValueAC(startValue,maxValue))
             // localStorage.setItem('maxValue', String(maxValue))
             // localStorage.setItem('startValue', String(startValue))
             dispatch(updateCountAC(startValue))
