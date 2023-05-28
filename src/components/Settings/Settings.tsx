@@ -1,67 +1,75 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent} from 'react';
 import {Button} from '../Button/Button';
 import {NavLink} from 'react-router-dom';
 import s from '../Counter/Counter.module.css';
 import b from '../Button/Button.module.css';
+import {useDispatch, useSelector} from 'react-redux';
+import {RootStateType} from '../redux/redux-store';
+import {saveStartAndMaxValueAC, setMaxValueAC, setStartValueAC, updateCountAC} from '../Counter-Reducer/counterReducer';
 
 
 type PropsType = {
     callbackSet: (min: number, max: number) => void;
-    setCount:(startValue:number)=>void
-    startValue:number
-    maxValue:number
-    setMaxValue:(maxValue:number)=>void
-    setStartValue:(startValue:number)=>void
+    // setCount:(startValue:number)=>void
+    // startValue: number
+    // maxValue: number
+    // setMaxValue: (maxValue: number) => void
+    // setStartValue: (startValue: number) => void
 };
 
-export const Settings: React.FC<PropsType> = (props) => {
-    const {startValue,maxValue,setMaxValue,setStartValue,callbackSet,setCount} = props;
+export const Settings: React.FC<PropsType> = () => {
+        // const {callbackSet} = props;
+        const maxValue = useSelector<RootStateType, number>(counterState => counterState.counterState.maxValue)
+        const startValue = useSelector<RootStateType, number>(counterState => counterState.counterState.startValue)
+        // const count = useSelector<RootStateType, number>(counterState => counterState.counterState.count)
+        const dispatch = useDispatch()
+        const onChangeMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
+            const newValue = +e.currentTarget.value;
+            if (!isNaN(newValue)) {
+                // setMaxValue(newValue);
+                dispatch(setMaxValueAC(e))
+            }
+        };
 
+        const onChangeStartValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
+            // const newValue = +e.currentTarget.value;
+            // if (!isNaN(newValue)) {
+            // setStartValue(newValue);
+            dispatch(setStartValueAC(e))
 
-
-    const onChangeMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        const newValue = +e.currentTarget.value;
-        if (!isNaN(newValue)) {
-            setMaxValue(newValue);
+        };
+        const onClickSetHandler = () => {
+            // callbackSet(maxValue, startValue)
+            dispatch(saveStartAndMaxValueAC(maxValue, startValue))
+            // localStorage.setItem('maxValue', String(maxValue))
+            // localStorage.setItem('startValue', String(startValue))
+            dispatch(updateCountAC(startValue))
         }
-    };
+        return (
+            <div className={s.settings}>
+                <div className={s.wrapper}>
+                    <div className={s.inputs}>
+                        <div className={s.h3AndInput}>
+                            <h3>Max Value</h3>
 
-    const onChangeStartValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        const newValue = +e.currentTarget.value;
-        if (!isNaN(newValue)) {
-            setStartValue(newValue);
-        }
-    };
-    const onClickSetHandler = () => {
-        callbackSet(maxValue, startValue)
-        // localStorage.setItem('maxValue', String(maxValue))
-        // localStorage.setItem('startValue', String(startValue))
-        setCount(startValue)
-    }
-    return (
-        <div className={s.settings}>
-            <div className={s.wrapper}>
-                <div className={s.inputs}>
-                    <div className={s.h3AndInput}>
-                        <h3>Max Value</h3>
+                            <input value={maxValue} onChange={onChangeMaxValueHandler}/>
+                        </div>
+                        <div className={s.h3AndInput}>
+                            <h3>Min Value</h3>
 
-                        <input value={maxValue} onChange={onChangeMaxValueHandler}/>
+                            <input value={startValue} onChange={onChangeStartValueHandler}/>
+                        </div>
                     </div>
-                    <div className={s.h3AndInput}>
-                        <h3>Min Value</h3>
+                    <div className={s.buttonsContainer}>
 
-                        <input value={startValue} onChange={onChangeStartValueHandler}/>
+                        <button className={b.buttons} onClick={onClickSetHandler}>set</button>
+
+                        <NavLink to={'/'}>
+                            <Button buttonName={'counter'} disabled={false}/>
+                        </NavLink>
                     </div>
-                </div>
-                <div className={s.buttonsContainer}>
-
-                    <button className={b.buttons} onClick={onClickSetHandler}>set</button>
-
-                    <NavLink to={'/'}>
-                        <Button buttonName={'counter'} disabled={false}/>
-                    </NavLink>
                 </div>
             </div>
-        </div>
-    );
-};
+        );
+    }
+;

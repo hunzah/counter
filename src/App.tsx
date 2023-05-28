@@ -1,24 +1,38 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Counter from './components/Counter/Counter';
 import {Settings} from './components/Settings/Settings';
 import {Route, Routes} from 'react-router-dom';
 import Error404 from './components/Error404/Error404';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+    CounterStateType,
+    incrementCountAC,
+    resetCountAC,
+    setMaxValueAC, setStartValueAC
+} from './components/Counter-Reducer/counterReducer';
+import {RootStateType} from './components/redux/redux-store';
 
 
 function App() {
 // Settings
+    const maxValue = useSelector<RootStateType, number>(counterState=>counterState.counterState.maxValue)
+    const startValue = useSelector<RootStateType, number>(counterState=>counterState.counterState.startValue)
+    const count = useSelector<RootStateType, number>(counterState=>counterState.counterState.count)
 
-    const [maxValue, setMaxValue] = useState<number>(5)
-    const [startValue, setStartValue] = useState<number>(0)
+    const dispatch = useDispatch()
+    // const [maxValue, setMaxValue] = useState<number>(5)
+    // const [startValue, setStartValue] = useState<number>(0)
     const callbackSet = (max, min) => {
-        setMaxValue(max)
-        setStartValue(min)
+        // setMaxValue(max)
+        dispatch(setMaxValueAC(max))
+        dispatch(setStartValueAC(min))
+        // setStartValue(min)
         callbackSum()
         callbackRes()
     }
 
 // Counter
-    let [count, setCount] = useState<number>(0)
+
 
     // useEffect(() => {
     //     if (count) {
@@ -43,10 +57,12 @@ function App() {
 
 
     const callbackSum = () => {
-        count < maxValue && setCount(++count)
+        // count < maxValue && setCount(++count)
+        dispatch(incrementCountAC())
     }
     const callbackRes = () => {
-        setCount(startValue)
+        // setCount(startValue)
+        dispatch(resetCountAC())
     }
 
     const disabledSum = count === maxValue
@@ -64,12 +80,12 @@ function App() {
                                          disabledRes={disabledRes}
                                          maxValue={maxValue}/>}/>
                 <Route path={'/Settings'} element={<Settings
-                    maxValue={maxValue}
-                    startValue={startValue}
+                    // maxValue={maxValue}
+                    // startValue={startValue}
                     callbackSet={callbackSet}
-                    setCount={setCount}
-                    setMaxValue={setMaxValue}
-                    setStartValue={setStartValue}
+                    // setCount={setCount}
+                    // setMaxValue={setMaxValue}
+                    // setStartValue={setStartValue}
                 />}/>
                 <Route path={'*'} element={<Error404/>}/>
 
