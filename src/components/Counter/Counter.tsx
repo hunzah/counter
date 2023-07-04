@@ -16,7 +16,7 @@ type PropsType = {
 const Counter = (props: PropsType) => {
     const {count, maxValue, callbackSum, disabledSum, callbackRes, disabledRes, ...otherProps} = props
     return (
-        <div className={s.counter}>
+        <div className={s.counterContainer}>
             <div className={s.wrapper}>
                 <div className={s.container}>
                     <Scoreboard count={count} maxValue={maxValue}/>

@@ -1,12 +1,13 @@
-.counter {
-    display: flex;
-    justify-content: center;
+.counterContainer {
+
+    padding: 50px;
     min-height: 100%;
-    align-items: center;
     background-color: #1e193b;
 }
 
 .wrapper {
+    width: 40vw;
+    margin: auto;
     border: solid 5px #9fcece;
     border-radius: 20px;
 }
@@ -45,14 +46,30 @@
     align-items: center;
     padding: 1vw 1vw;
 }
-.h3AndInput h3{
+
+.h3AndInput h3 {
     font-size: 2vw;
     padding-right: 3vw;
-    color:#9fcece ;
+    color: #9fcece;
 }
+
 .inputs input {
     font-size: 1.5vw;
     border-radius: 10px;
     padding: 1vw 0;
-    text-align:center;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .counterContainer {
+        padding:40px 10px;
+    }
+
+    .wrapper {
+        width: 80vw;
+        height: 80vw;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+    }
 }

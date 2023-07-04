@@ -13,3 +13,10 @@
 .disabled {
 opacity: 50%;
 }
+@media screen and (max-width: 768px) {
+    .buttons {
+        font-size: 3vw;
+        width: 15vw;
+        height: 10vw;
+    }
+}

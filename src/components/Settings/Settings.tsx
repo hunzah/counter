@@ -3,6 +3,7 @@ import {Button} from '../Button/Button';
 import {NavLink} from 'react-router-dom';
 import s from '../Counter/Counter.module.css';
 import b from '../Button/Button.module.css';
+import counterContainer from'./../Counter/Counter.module.css'
 import {useDispatch, useSelector} from 'react-redux';
 import {RootStateType} from '../redux/redux-store';
 import {saveStartAndMaxValueAC, setMaxValueAC, setStartValueAC, updateCountAC} from '../Counter-Reducer/counterReducer';
@@ -46,7 +47,7 @@ export const Settings: React.FC<PropsType> = () => {
             dispatch(updateCountAC(startValue))
         }
         return (
-            <div className={s.settings}>
+            <div className={counterContainer.counterContainer}>
                 <div className={s.wrapper}>
                     <div className={s.inputs}>
                         <div className={s.h3AndInput}>
