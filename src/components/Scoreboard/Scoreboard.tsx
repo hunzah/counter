@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 import s from './Scoreboard.module.css'
 type PropsType = {
-    count:number
-    maxValue:number
+    count:number | string
+    maxValue:number | string
 }
 
 export const Scoreboard: FC<PropsType> = (props) => {

@@ -72,7 +72,7 @@ function App() {
     return (
         <>
             <Routes>
-                <Route path={'/'}
+                <Route path={'/counter'}
                        element={<Counter count={count}
                                          callbackRes={callbackRes}
                                          callbackSum={callbackSum}

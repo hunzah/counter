@@ -1,9 +1,10 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import {Button} from '../Button/Button';
 import {NavLink} from 'react-router-dom';
 import s from '../Counter/Counter.module.css';
 import b from '../Button/Button.module.css';
-import counterContainer from'./../Counter/Counter.module.css'
+import i from './Settings.module.css'
+import counterContainer from './../Counter/Counter.module.css'
 import {useDispatch, useSelector} from 'react-redux';
 import {RootStateType} from '../redux/redux-store';
 import {saveStartAndMaxValueAC, setMaxValueAC, setStartValueAC, updateCountAC} from '../Counter-Reducer/counterReducer';
@@ -19,6 +20,8 @@ type PropsType = {
 };
 
 export const Settings: React.FC<PropsType> = () => {
+
+
         // const {callbackSet} = props;
         const maxValue = useSelector<RootStateType, number>(counterState => counterState.counterState.maxValue)
         const startValue = useSelector<RootStateType, number>(counterState => counterState.counterState.startValue)
@@ -41,31 +44,49 @@ export const Settings: React.FC<PropsType> = () => {
         };
         const onClickSetHandler = () => {
             // callbackSet(maxValue, startValue)
-            dispatch(saveStartAndMaxValueAC(startValue,maxValue))
+            dispatch(saveStartAndMaxValueAC(startValue, maxValue))
             // localStorage.setItem('maxValue', String(maxValue))
             // localStorage.setItem('startValue', String(startValue))
             dispatch(updateCountAC(startValue))
         }
+
+
+    const [error, setError] = useState<string | undefined>(undefined);
+
+    useEffect(() => {
+        if (startValue > maxValue) {
+            setError('start value must be less than max value');
+        } else if (typeof (startValue) !== 'number' || typeof (maxValue) !== 'number') {
+            setError('Value can only be a number');
+        } else {
+            setError(undefined);
+        }
+    }, [startValue, maxValue]);
+
+    const inputErrorStyles = error ? i.error : '';
         return (
             <div className={counterContainer.counterContainer}>
                 <div className={s.wrapper}>
                     <div className={s.inputs}>
                         <div className={s.h3AndInput}>
                             <h3>Max Value</h3>
-
-                            <input value={maxValue} onChange={onChangeMaxValueHandler}/>
+                            <input
+                                className={`${i.input} ${error ? i.error : ''}`}
+                                value={maxValue} onChange={onChangeMaxValueHandler}/>
                         </div>
                         <div className={s.h3AndInput}>
                             <h3>Min Value</h3>
 
-                            <input value={startValue} onChange={onChangeStartValueHandler}/>
+                            <input
+                                className={`${i.input} ${error ? i.error : ''}`}
+                                value={startValue} onChange={onChangeStartValueHandler}/>
                         </div>
+                        {error && <div className={i.errorText}>{error}</div>}
                     </div>
                     <div className={s.buttonsContainer}>
-
-                        <button className={b.buttons} onClick={onClickSetHandler}>set</button>
-
-                        <NavLink to={'/'}>
+                        {error ? <button disabled={true} className={b.buttons} onClick={onClickSetHandler}>set</button>:
+                            <button className={b.buttons} onClick={onClickSetHandler}>set</button>}
+                        <NavLink to={'/counter'}>
                             <Button buttonName={'counter'} disabled={false}/>
                         </NavLink>
                     </div>
