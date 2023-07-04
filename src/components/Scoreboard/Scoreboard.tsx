@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import s from './Scoreboard.module.css'
+import s from './Scoreboard.module.scss'
 type PropsType = {
     count:number | string
     maxValue:number | string

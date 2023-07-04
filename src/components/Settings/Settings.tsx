@@ -1,10 +1,10 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
 import {Button} from '../Button/Button';
 import {NavLink} from 'react-router-dom';
-import s from '../Counter/Counter.module.css';
-import b from '../Button/Button.module.css';
-import i from './Settings.module.css'
-import counterContainer from './../Counter/Counter.module.css'
+import s from '../Counter/Counter.module.scss';
+import b from '../Button/Button.module.scss';
+import i from './Settings.module.scss'
+import counterContainer from '../Counter/Counter.module.scss'
 import {useDispatch, useSelector} from 'react-redux';
 import {RootStateType} from '../redux/redux-store';
 import {saveStartAndMaxValueAC, setMaxValueAC, setStartValueAC, updateCountAC} from '../Counter-Reducer/counterReducer';

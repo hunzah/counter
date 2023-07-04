@@ -1,5 +1,5 @@
 import React, {FC, useState} from 'react';
-import s from './Button.module.css'
+import s from './Button.module.scss'
 
 type PropsType = {
     callbackSum?: ()=> void

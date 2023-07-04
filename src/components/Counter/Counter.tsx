@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './Counter.module.css'
+import s from './Counter.module.scss'
 import {Scoreboard} from '../Scoreboard/Scoreboard';
 import {Button} from '../Button/Button';
 import {NavLink} from 'react-router-dom';

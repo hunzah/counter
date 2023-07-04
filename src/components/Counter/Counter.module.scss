@@ -1,21 +1,22 @@
+@import './src/components/common/variables';
 .counterContainer {
 
     padding: 50px;
     min-height: 100%;
-    background-color: #1e193b;
+    background-color:$backColor;
 }
 
 .wrapper {
     width: 40vw;
     margin: auto;
-    border: solid 5px #9fcece;
+    border: solid 5px $borderColor;
     border-radius: 20px;
 }
 
 .buttonsContainer {
     font-size: 0.1vw;
-    color: #9fcece;
-    border: 5px solid #9fcece;
+    color: $borderColor;
+    border: 5px solid $borderColor;
     border-radius: 20px;
     padding: 2vw 0;
     margin: 3vw 3vw;
@@ -30,11 +31,11 @@
     justify-content: center;
     min-height: 100%;
     align-items: center;
-    background-color: #1e193b;
+    background-color: $backColor;
 }
 
 .inputs {
-    border: 5px solid #9fcece;
+    border: 5px solid $borderColor;
     border-radius: 20px;
     padding: 2vw 0;
     margin: 3vw 3vw;
@@ -50,7 +51,7 @@
 .h3AndInput h3 {
     font-size: 2vw;
     padding-right: 3vw;
-    color: #9fcece;
+    color: $borderColor;
 }
 
 .inputs input {
@@ -81,6 +82,6 @@
     .h3AndInput h3 {
         font-size: 3.5vw;
         padding-right: 4vw;
-        color: #9fcece;
+        color: $borderColor;
     }
 }
