@@ -2,7 +2,6 @@
 import {RootStateType} from '../components/redux/redux-store';
 
 
-
 export const loadState = () => {
     try {
         const serializedState = localStorage.getItem('app-state');
@@ -16,8 +15,7 @@ export const loadState = () => {
 };
 
 
-
-export const saveState = (state:RootStateType) => {
+export const saveState = (state: RootStateType) => {
     try {
         const serializedState = JSON.stringify(state);
         localStorage.setItem('app-state', serializedState);
@@ -25,9 +23,6 @@ export const saveState = (state:RootStateType) => {
         // ignore write errors
     }
 };
-
-
-
 
 
 // store.js

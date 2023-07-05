@@ -9,16 +9,16 @@ describe('all counter Reducer tests', () => {
     };
     test('count should be increment', () => {
 
-
         const endStateState = counterReducer(startState, incrementCountAC())
         expect(endStateState.count).toBe(4)
     })
-    test('count must be reset', () => {
 
+    test('count must be reset', () => {
 
         const endStateState = counterReducer(startState, resetCountAC())
         expect(endStateState.count).toBe(0)
     })
+
     test('new maxValue should be added', () => {
 
         const mockEvent = {
@@ -27,8 +27,8 @@ describe('all counter Reducer tests', () => {
         const endStateState = counterReducer(startState, setMaxValueAC(mockEvent))
         expect(endStateState.maxValue).toBe(8)
     })
-    test('new startValue should be added', () => {
 
+    test('new startValue should be added', () => {
 
         const mockEvent = {
             target: {value: '3'},

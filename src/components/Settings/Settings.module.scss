@@ -1,8 +1,8 @@
 @import './src/components/common/variables';
-
-.errorText {
-  color: $errorColor;
-  font-size: 18px;
-  font-weight: 700;
-  text-align: center;
+@import './src/components/common/mixins';
+.error {
+    color:$errorColor;
+}
+.errorText{
+    @include error-text;
 }

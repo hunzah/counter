@@ -3,7 +3,7 @@ import s from './Input.module.scss'
 
 type PropsType = {
     value: number
-    callback:  (e: ChangeEvent<HTMLInputElement>) => void
+    callback: (e: ChangeEvent<HTMLInputElement>) => void
     error: string
     disabled?: boolean
 }

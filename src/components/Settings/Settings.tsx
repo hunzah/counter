@@ -21,7 +21,6 @@ export const Settings: React.FC<PropsType> = () => {
     const startValue = useSelector<RootStateType, number>(counterState => counterState.state.startValue)
 
 
-
     const dispatch = useDispatch()
 
 

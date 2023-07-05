@@ -29,7 +29,8 @@ const Counter = (props: PropsType) => {
                         <Button buttonName="settings"/>
                     </NavLink>
                 </div>
-                {disabledSum && disabledRes && <div className={s.errorFontStyle}>start value must be less than max value</div>}
+                {disabledSum && disabledRes &&
+                    <div className={s.errorFontStyle}>start value must be less than max value</div>}
             </div>
         </div>
     );

@@ -1,19 +1,23 @@
 @import './src/components/common/variables';
 
 .scoreboard {
-    font-size: 8vw;
-    color: $borderColor;
-    border: 5px solid $borderColor;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2vw 15vw;
-    margin: 3vw 3vw;
+  font-size: 8vw;
+  color: $borderColor;
+  border: 5px solid $borderColor;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2vw 15vw;
+  margin: 3vw 3vw;
 }
+
 .disabled {
-    color: $errorColor;
+  color: $errorColor;
 }
+
 @media screen and (max-width: 900px) {
-    .scoreboard {font-size: 20vw;}
+  .scoreboard {
+    font-size: 20vw;
+  }
 }
