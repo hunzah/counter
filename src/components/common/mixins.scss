@@ -1,0 +1,8 @@
+@import './variables';
+
+@mixin error-text($font-size: 18px) {
+  color: $errorColor;
+  font-size: $font-size;
+  font-weight: 700;
+  text-align: center;
+}

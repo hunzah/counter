@@ -39,7 +39,7 @@ function App() {
     }
 
 
-    const disabledSum = count === maxValue
+    const disabledSum = count === maxValue || startValue>maxValue
     const disabledRes = count === startValue
 
 

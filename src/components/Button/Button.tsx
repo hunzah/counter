@@ -1,26 +1,20 @@
-import React, {FC, useState} from 'react';
+import React, {FC} from 'react';
 import s from './Button.module.scss'
 
 type PropsType = {
-    callbackSum?: ()=> void
-    callbackRes?: ()=> void
-    callbackSet?: ()=> void
-    buttonName:string
-    disabled: boolean
+    callback?: () => void
+    buttonName: string
+    disabled?: boolean
 }
 
 export const Button: FC<PropsType> = (props) => {
-    const {callbackSum,callbackRes,buttonName,disabled,callbackSet, ...otherProps} = props
-    const onClickHunter = () => {
-        if(callbackSum) callbackSum()
-        if(callbackRes) callbackRes()
-        if(callbackSet) callbackSet()
-    }
+    const {callback, buttonName, disabled, ...otherProps} = props
 
-const className = disabled? `${s.buttons} ${s.disabled}`:s.buttons
+
+    const className = disabled ? `${s.buttons} ${s.disabled}` : s.buttons
     return (
         <div className={s.wrapper}>
-            <button disabled={disabled} className={className} onClick={onClickHunter}>{buttonName}</button>
+            <button disabled={disabled} className={className} onClick={callback}>{buttonName}</button>
         </div>
     );
 };

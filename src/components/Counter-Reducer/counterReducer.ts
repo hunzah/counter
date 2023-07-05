@@ -32,12 +32,12 @@ export const counterReducer = (
         case 'RESET-THE-COUNTER':
             return {...state, count: state.startValue};
         case 'SET-MAX-VALUE':
-            const newMaxValue = +action.event.currentTarget.value;
+            const newMaxValue = +action.event.target.value;
             if (!isNaN(newMaxValue)) {
                 return {...state, maxValue: newMaxValue};
             } else return state
         case 'SET-START-VALUE':
-            const newStartValue = +action.event.currentTarget.value;
+            const newStartValue = +action.event.target.value;
             if (!isNaN(newStartValue)) {
                 return {...state, startValue: newStartValue};
             } else return state
@@ -49,7 +49,6 @@ export const counterReducer = (
             return state;
     }
 };
-
 export const incrementCountAC = () => {
     return {type: 'INCREASE-THE-COUNTER'} as const
 };
@@ -68,17 +67,17 @@ export const setStartValueAC = (e: ChangeEvent<HTMLInputElement>) => {
         event: e
     } as const
 };
-export const saveStartAndMaxValueAC = (newStartValue, newMaxValue) => {
+export const saveStartAndMaxValueAC = (newStartValue: number, newMaxValue: number) => {
     return {
         type: 'SAVE-START-AND-MAX-VALUE',
         newStartValue: newStartValue,
         newMaxValue: newMaxValue
     } as const
 };
-export const updateCountAC = (newCountValue) => {
+export const updateCountAC = (newCountValue: number) => {
     return {
         type: 'UPDATE-COUNT',
-        newCountValue:newCountValue
+        newCountValue: newCountValue
     } as const
 };
 
