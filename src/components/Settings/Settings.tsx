@@ -6,7 +6,7 @@ import counterContainer from '../Counter/Counter.module.scss';
 import i from './Settings.module.scss'
 import {useDispatch, useSelector} from 'react-redux';
 import {RootStateType} from '../redux/redux-store';
-import {saveStartAndMaxValueAC, setMaxValueAC, setStartValueAC, updateCountAC} from '../Counter-Reducer/counterReducer';
+import {saveStartAndMaxValueAC, setMaxValueAC, setStartValueAC} from '../Counter-Reducer/counterReducer';
 import {Input} from '../Input/Input';
 
 

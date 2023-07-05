@@ -1,17 +1,5 @@
 import {ChangeEvent} from 'react';
 
-export type CounterStateType = {
-    count: number;
-    startValue: number;
-    maxValue: number;
-};
-
-export const initialState: CounterStateType = {
-    count: 0,
-    startValue: 0,
-    maxValue: 5,
-};
-
 export interface IncrementCountACType {
     type: 'INCREASE-THE-COUNTER';
 }
@@ -42,7 +30,19 @@ export type ActionType =
     | SetMaxValueACType
     | SetStartValueACType
     | SaveStartAndMaxValueACType
+export type CounterStateType = {
+    count: number;
+    startValue: number;
+    maxValue: number;
+};
 
+
+
+export const initialState: CounterStateType = {
+    count: 0,
+    startValue: 0,
+    maxValue: 5,
+};
 
 export const counterReducer = (
     state: CounterStateType = initialState,

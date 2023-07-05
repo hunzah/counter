@@ -33,7 +33,7 @@ describe('all counter Reducer tests', () => {
             maxValue: 5,
         };
         const mockEvent = {
-            currentTarget: {value: '8'},
+            target: {value: '8'},
         } as ChangeEvent<HTMLInputElement>;
         const endStateState = counterReducer(startState, setMaxValueAC(mockEvent))
         expect(endStateState.maxValue).toBe(8)
