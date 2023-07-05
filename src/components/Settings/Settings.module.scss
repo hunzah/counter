@@ -1,14 +1,5 @@
 @import './src/components/common/variables';
 
-.input {
-  background-color: $buttonsColor;
-  color:$buttonsAndInputsFontColor
-}
-
-.error {
-  color: $errorColor;
-  font-weight: 500;
-}
 .errorText {
   color: $errorColor;
   font-size: 18px;

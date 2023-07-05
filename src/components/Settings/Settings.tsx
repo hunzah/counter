@@ -2,12 +2,13 @@ import React, {ChangeEvent, useEffect, useState} from 'react';
 import {Button} from '../Button/Button';
 import {NavLink} from 'react-router-dom';
 import s from '../Counter/Counter.module.scss';
+import counterContainer from '../Counter/Counter.module.scss';
 import b from '../Button/Button.module.scss';
 import i from './Settings.module.scss'
-import counterContainer from '../Counter/Counter.module.scss'
 import {useDispatch, useSelector} from 'react-redux';
 import {RootStateType} from '../redux/redux-store';
 import {saveStartAndMaxValueAC, setMaxValueAC, setStartValueAC, updateCountAC} from '../Counter-Reducer/counterReducer';
+import {Input} from '../Input/Input';
 
 
 type PropsType = {
@@ -34,10 +35,9 @@ export const Settings: React.FC<PropsType> = () => {
         };
 
 
-
         const onClickSetHandler = () => {
-                dispatch(saveStartAndMaxValueAC(startValue, maxValue))
-                dispatch(updateCountAC(startValue))
+            dispatch(saveStartAndMaxValueAC(startValue, maxValue))
+            dispatch(updateCountAC(startValue))
         }
 
 // errors setting
@@ -65,15 +65,11 @@ export const Settings: React.FC<PropsType> = () => {
                     <div className={s.inputs}>
                         <div className={s.h3AndInput}>
                             <h3>Max Value</h3>
-                            <input
-                                className={errorStyles}
-                                value={maxValue} onChange={onChangeMaxValueHandler}/>
+                            <Input error={error} value={maxValue} callback={onChangeMaxValueHandler}/>
                         </div>
                         <div className={s.h3AndInput}>
                             <h3>Start Value</h3>
-                            <input
-                                className={errorStyles}
-                                value={startValue} onChange={onChangeStartValueHandler}/>
+                            <Input error={error} value={startValue} callback={onChangeStartValueHandler}/>
                         </div>
                         {error && <div className={i.errorText}>{error}</div>}
                     </div>
