@@ -42,10 +42,8 @@ export const counterReducer = (
                 return {...state, startValue: newStartValue};
             } else return state
         case 'SAVE-START-AND-MAX-VALUE':
-            // const startValue = +action.event.currentTarget.value;
             return {...state, startValue: action.newStartValue, maxValue: action.newMaxValue};
         case 'UPDATE-COUNT':
-            // const startValue = +action.event.currentTarget.value;
             return {...state, count: action.newCountValue};
         default:
             return state;

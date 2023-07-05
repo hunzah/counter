@@ -21,39 +21,43 @@ export const Settings: React.FC<PropsType> = () => {
         const startValue = useSelector<RootStateType, number>(counterState => counterState.state.startValue)
 
         const dispatch = useDispatch()
+
+
         const onChangeMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
             const newValue = +e.currentTarget.value;
             if (!isNaN(newValue)) {
-
                 dispatch(setMaxValueAC(e))
             }
         };
-
         const onChangeStartValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
-
             dispatch(setStartValueAC(e))
-
         };
+
+
+
         const onClickSetHandler = () => {
-            dispatch(saveStartAndMaxValueAC(startValue, maxValue))
-            dispatch(updateCountAC(startValue))
+                dispatch(saveStartAndMaxValueAC(startValue, maxValue))
+                dispatch(updateCountAC(startValue))
         }
 
 // errors setting
-    const [error, setError] = useState<string | undefined>(undefined);
+        const [error, setError] = useState<string | undefined>(undefined);
+        const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
-    useEffect(() => {
-        if (startValue > maxValue) {
-            setError('start value must be less than max value');
-        } else if (typeof (startValue) !== 'number' || typeof (maxValue) !== 'number') {
-            setError('Value can only be a number');
-        } else {
-            setError(undefined);
-        }
-    }, [startValue, maxValue]);
+        useEffect(() => {
+            if (startValue > maxValue) {
+                setError('start value must be less than max value');
+                setIsDisabled(true);
+            } else if (typeof (startValue) !== 'number' || typeof (maxValue) !== 'number') {
+                setError('Value can only be a number');
+                setIsDisabled(true);
+            } else {
+                setError(undefined);
+                setIsDisabled(false);
+            }
+        }, [startValue, maxValue]);
 
-    const errorStyles = error ? i.error : '';
-
+        const errorStyles = error ? i.error : '';
 
         return (
             <div className={counterContainer.counterContainer}>
@@ -67,7 +71,6 @@ export const Settings: React.FC<PropsType> = () => {
                         </div>
                         <div className={s.h3AndInput}>
                             <h3>Start Value</h3>
-
                             <input
                                 className={errorStyles}
                                 value={startValue} onChange={onChangeStartValueHandler}/>
@@ -75,8 +78,7 @@ export const Settings: React.FC<PropsType> = () => {
                         {error && <div className={i.errorText}>{error}</div>}
                     </div>
                     <div className={s.buttonsContainer}>
-                        {error ? <button disabled={true} className={b.buttons} onClick={onClickSetHandler}>set</button>:
-                            <button className={b.buttons} onClick={onClickSetHandler}>set</button>}
+                        <button className={b.buttons} disabled={isDisabled} onClick={onClickSetHandler}>set</button>
                         <NavLink to={'/counter'}>
                             <Button buttonName={'counter'} disabled={false}/>
                         </NavLink>
