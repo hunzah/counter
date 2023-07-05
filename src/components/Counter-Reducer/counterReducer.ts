@@ -12,14 +12,36 @@ export const initialState: CounterStateType = {
     maxValue: 5,
 };
 
+export interface IncrementCountACType {
+    type: 'INCREASE-THE-COUNTER';
+}
+
+export interface ResetCountACType {
+    type: 'RESET-THE-COUNTER';
+}
+
+export interface SetMaxValueACType {
+    type: 'SET-MAX-VALUE';
+    event: ChangeEvent<HTMLInputElement>;
+}
+
+export interface SetStartValueACType {
+    type: 'SET-START-VALUE';
+    event: ChangeEvent<HTMLInputElement>;
+}
+
+export interface SaveStartAndMaxValueACType {
+    type: 'SAVE-START-AND-MAX-VALUE';
+    newStartValue: number;
+    newMaxValue: number;
+}
 
 export type ActionType =
-    | ReturnType<typeof incrementCountAC>
-    | ReturnType<typeof resetCountAC>
-    | ReturnType<typeof setMaxValueAC>
-    | ReturnType<typeof setStartValueAC>
-    | ReturnType<typeof saveStartAndMaxValueAC>
-    | ReturnType<typeof updateCountAC>
+    IncrementCountACType
+    | ResetCountACType
+    | SetMaxValueACType
+    | SetStartValueACType
+    | SaveStartAndMaxValueACType
 
 
 export const counterReducer = (
@@ -43,41 +65,34 @@ export const counterReducer = (
             } else return state
         case 'SAVE-START-AND-MAX-VALUE':
             return {...state, startValue: action.newStartValue, maxValue: action.newMaxValue};
-        case 'UPDATE-COUNT':
-            return {...state, count: action.newCountValue};
+
         default:
             return state;
     }
 };
-export const incrementCountAC = () => {
+export const incrementCountAC = (): IncrementCountACType => {
     return {type: 'INCREASE-THE-COUNTER'} as const
 };
-export const resetCountAC = () => {
+export const resetCountAC = (): ResetCountACType => {
     return {type: 'RESET-THE-COUNTER'} as const
 };
-export const setMaxValueAC = (e: ChangeEvent<HTMLInputElement>) => {
+export const setMaxValueAC = (e: ChangeEvent<HTMLInputElement>): SetMaxValueACType => {
     return {
         type: 'SET-MAX-VALUE',
         event: e
     } as const
 };
-export const setStartValueAC = (e: ChangeEvent<HTMLInputElement>) => {
+export const setStartValueAC = (e: ChangeEvent<HTMLInputElement>): SetStartValueACType => {
     return {
         type: 'SET-START-VALUE',
         event: e
     } as const
 };
-export const saveStartAndMaxValueAC = (newStartValue: number, newMaxValue: number) => {
+export const saveStartAndMaxValueAC = (newStartValue: number, newMaxValue: number): SaveStartAndMaxValueACType => {
     return {
         type: 'SAVE-START-AND-MAX-VALUE',
         newStartValue: newStartValue,
         newMaxValue: newMaxValue
-    } as const
-};
-export const updateCountAC = (newCountValue: number) => {
-    return {
-        type: 'UPDATE-COUNT',
-        newCountValue: newCountValue
     } as const
 };
 
