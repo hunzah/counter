@@ -19,6 +19,8 @@ export const Settings: React.FC<PropsType> = () => {
 
     const maxValue = useSelector<RootStateType, number>(counterState => counterState.state.maxValue)
     const startValue = useSelector<RootStateType, number>(counterState => counterState.state.startValue)
+    const [startValue1,setStartValue]= useState<number>(startValue)
+
 
     const dispatch = useDispatch()
 
