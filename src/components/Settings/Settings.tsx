@@ -12,45 +12,34 @@ import {saveStartAndMaxValueAC, setMaxValueAC, setStartValueAC, updateCountAC} f
 
 type PropsType = {
     callbackSet: (min: number, max: number) => void;
-    // setCount:(startValue:number)=>void
-    // startValue: number
-    // maxValue: number
-    // setMaxValue: (maxValue: number) => void
-    // setStartValue: (startValue: number) => void
 };
 
 export const Settings: React.FC<PropsType> = () => {
 
 
-        // const {callbackSet} = props;
-        const maxValue = useSelector<RootStateType, number>(counterState => counterState.counterState.maxValue)
-        const startValue = useSelector<RootStateType, number>(counterState => counterState.counterState.startValue)
-        // const count = useSelector<RootStateType, number>(counterState => counterState.counterState.count)
+        const maxValue = useSelector<RootStateType, number>(counterState => counterState.state.maxValue)
+        const startValue = useSelector<RootStateType, number>(counterState => counterState.state.startValue)
+
         const dispatch = useDispatch()
         const onChangeMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
             const newValue = +e.currentTarget.value;
             if (!isNaN(newValue)) {
-                // setMaxValue(newValue);
+
                 dispatch(setMaxValueAC(e))
             }
         };
 
         const onChangeStartValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
-            // const newValue = +e.currentTarget.value;
-            // if (!isNaN(newValue)) {
-            // setStartValue(newValue);
+
             dispatch(setStartValueAC(e))
 
         };
         const onClickSetHandler = () => {
-            // callbackSet(maxValue, startValue)
             dispatch(saveStartAndMaxValueAC(startValue, maxValue))
-            // localStorage.setItem('maxValue', String(maxValue))
-            // localStorage.setItem('startValue', String(startValue))
             dispatch(updateCountAC(startValue))
         }
 
-
+// errors setting
     const [error, setError] = useState<string | undefined>(undefined);
 
     useEffect(() => {
@@ -63,7 +52,9 @@ export const Settings: React.FC<PropsType> = () => {
         }
     }, [startValue, maxValue]);
 
-    const inputErrorStyles = error ? i.error : '';
+    const errorStyles = error ? i.error : '';
+
+
         return (
             <div className={counterContainer.counterContainer}>
                 <div className={s.wrapper}>
@@ -71,14 +62,14 @@ export const Settings: React.FC<PropsType> = () => {
                         <div className={s.h3AndInput}>
                             <h3>Max Value</h3>
                             <input
-                                className={`${i.input} ${error ? i.error : ''}`}
+                                className={errorStyles}
                                 value={maxValue} onChange={onChangeMaxValueHandler}/>
                         </div>
                         <div className={s.h3AndInput}>
-                            <h3>Min Value</h3>
+                            <h3>Start Value</h3>
 
                             <input
-                                className={`${i.input} ${error ? i.error : ''}`}
+                                className={errorStyles}
                                 value={startValue} onChange={onChangeStartValueHandler}/>
                         </div>
                         {error && <div className={i.errorText}>{error}</div>}

@@ -22,7 +22,7 @@ export type ActionType =
     | ReturnType<typeof updateCountAC>
 
 
-const counterReducer = (
+export const counterReducer = (
     state: CounterStateType = initialState,
     action: ActionType
 ): CounterStateType => {
