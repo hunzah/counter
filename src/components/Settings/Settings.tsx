@@ -23,20 +23,21 @@ export const Settings: React.FC<PropsType> = () => {
 
     const dispatch = useDispatch()
 
-
+    const [maxValueLocal, setMaxValueLocal] = useState<number>(maxValue)
+    const [startValueLocal, setStartValueLocal] = useState<number>(startValue)
     const onChangeMaxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         const newValue = +e.currentTarget.value;
         if (!isNaN(newValue)) {
-            dispatch(setMaxValueAC(e))
+            setMaxValueLocal(newValue)
         }
     };
     const onChangeStartValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        dispatch(setStartValueAC(e))
+        setStartValueLocal(+e.currentTarget.value)
     };
 
 
     const onClickSetHandler = () => {
-        dispatch(saveStartAndMaxValueAC(startValue, maxValue))
+        dispatch(saveStartAndMaxValueAC(startValueLocal, maxValueLocal))
     }
 
 // errors setting
@@ -62,11 +63,11 @@ export const Settings: React.FC<PropsType> = () => {
                 <div className={s.inputs}>
                     <div className={s.h3AndInput}>
                         <h3>Max Value</h3>
-                        <Input error={error} value={maxValue} callback={onChangeMaxValueHandler}/>
+                        <Input error={error} value={maxValueLocal} callback={onChangeMaxValueHandler}/>
                     </div>
                     <div className={s.h3AndInput}>
                         <h3>Start Value</h3>
-                        <Input error={error} value={startValue} callback={onChangeStartValueHandler}/>
+                        <Input error={error} value={startValueLocal} callback={onChangeStartValueHandler}/>
                     </div>
                     {error && <div className={i.errorText}>{error}</div>}
                 </div>

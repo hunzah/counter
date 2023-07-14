@@ -64,7 +64,7 @@ export const counterReducer = (
                 return {...state, startValue: newStartValue};
             } else return state
         case 'SAVE-START-AND-MAX-VALUE':
-            return {...state, startValue: action.newStartValue, maxValue: action.newMaxValue};
+            return {...state, count:action.newStartValue, startValue: action.newStartValue, maxValue: action.newMaxValue};
 
         default:
             return state;
