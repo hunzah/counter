@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Counter from './components/Counter/Counter';
 import {Settings} from './components/Settings/Settings';
 import {Route, Routes} from 'react-router-dom';
@@ -23,6 +23,18 @@ function App() {
     const dispatch = useDispatch()
 
 
+    // useEffect(() => {
+    //     localStorage.setItem('startValue', JSON.stringify(startValue))
+    //     localStorage.setItem('maxValue', JSON.stringify(maxValue))
+    //     localStorage.setItem('count', JSON.stringify(count))
+    // }, [maxValue, startValue, count])
+    //
+    // useEffect(() => {
+    //     localStorage.getItem('startValue', JSON.stringify(startValue))
+    //     localStorage.getItem('maxValue', JSON.stringify(maxValue))
+    //     localStorage.getItem('count', JSON.stringify(count))
+    // }, [])
+
     const callbackSet = (max, min) => {
         dispatch(setMaxValueAC(max))
         dispatch(setStartValueAC(min))
@@ -39,7 +51,7 @@ function App() {
     }
 
 
-    const disabledSum = count === maxValue || startValue>maxValue
+    const disabledSum = count === maxValue || startValue > maxValue
     const disabledRes = count === startValue
 
 
